@@ -15,44 +15,6 @@ if (!$db_connection)
 // Login user
 mysqli_select_db($db_connection,"university_database");
 if(isset($_POST['login_user'])){
-   /* echo "entered here <br>";
-    $username = mysqli_real_escape_string($db_connection,$_POST['username']) ;
-    $password = mysqli_real_escape_string($db_connection,$_POST['password']) ;
-   if (empty($username)) {
-        array_push($errors, "Username is required");
-    }
-    if (empty($password)) {
-        array_push($errors, "Password is required");
-    }*/
-
-
-    /*
-    $query = "SELECT * FROM university_model.user_list WHERE username=$username AND password='$password'";
-    $results = mysqli_query($db_connection, $query);
-    $rows = array();
-    while($r = mysqli_fetch_assoc($results)) {
-        $rows[] = $r;
-    }
-    echo json_encode($rows) . "<br>";
-    echo mysqli_num_rows($results) ;
-    echo  "<br>";
-
-    if (empty($username)) {
-        array_push($errors, "Username is required");
-    }
-    if (empty($password)) {
-        array_push($errors, "Password is required");
-    }
-
-
-   if (mysqli_num_rows($results) == 1) {
-         echo "entered here ";
-       $_SESSION['username'] = $username;
-       $_SESSION['success'] = "You are now logged in";
-        header('location: studentloggedIn.php');
-        echo "login succesful";
-    }
-    */
     $username = mysqli_real_escape_string($db_connection,$_POST['username']) ;
     $password =mysqli_real_escape_string($db_connection,$_POST['password']) ;
     if (empty($username)) {
@@ -63,7 +25,6 @@ if(isset($_POST['login_user'])){
     }
 
     if (count($errors) == 0 ) {
-
         $query = "SELECT * FROM university_model.user_list WHERE username=$username AND password='$password'";
         $results = mysqli_query($db_connection, $query);
         if (mysqli_num_rows($results) == 1 ) {
