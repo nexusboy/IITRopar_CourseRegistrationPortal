@@ -23,7 +23,7 @@ if(!$results)
 }
 
 $rows = array();
-while($r = mysqli_fetch_assoc($query_run)) {
+while($r = mysqli_fetch_assoc($results  )) {
     $rows[] = $r;
 }
 echo json_encode($rows);
