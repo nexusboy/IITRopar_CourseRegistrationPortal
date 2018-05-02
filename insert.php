@@ -45,7 +45,7 @@ if ( mysqli_num_rows($results) == 0 ) {
     }
 }
 elseif(mysqli_num_rows($results) == 1){
-    echo "Cannot add because the student has registered in same slot    ";
+    echo "Cannot add because the student has registered in same slot ";
 }
 /*Write insert pending*/
 
