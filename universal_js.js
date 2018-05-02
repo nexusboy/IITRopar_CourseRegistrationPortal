@@ -2,9 +2,6 @@ function addCourse(button) {
     var id = parseInt(button.id, 10);
     //alert(id);
     var table = document.getElementById("table");
-    var courseId = "";
-
-    //console.log(table.rows[id]);
 
     var rowCollection = table.rows.item(id).cells;
     var courseSlot = rowCollection.item(4).innerText;
@@ -13,7 +10,7 @@ function addCourse(button) {
     $.ajax({
         type: "POST",
         url: "insert.php",
-        data: {query: 'select * from courses', add_course: "1", course_id: courseId, course_slot: courseSlot},
+        data: {query: 'select * from courses', add_course: "1", course_id: id, course_slot: courseSlot},
         success: function (OUTPUT) {
             alert(OUTPUT);
             OUT = OUTPUT;
