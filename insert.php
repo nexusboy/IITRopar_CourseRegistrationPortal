@@ -23,6 +23,15 @@ $courseID=$_POST['course_id'];
 
 echo "$courseID in ineret";
 
-
 /*Write insert pending*/
+
+
+// No courses should be in same slot
+
+
+
+// No of credits + course_credits < credit_limit then insert
+
+$query = 'INSERT INTO enrolls(id, courseid) VALUES (' .$username.','.$courseID.');';
+mysqli_query($db_connection, $sql1);
 ?>
