@@ -50,7 +50,7 @@ if(isset($_GET['add_course'])){
             <ul class="nav navbar-nav">
                 <li><a href="studentloggedIn.php">Courses</a></li>
                 <li class="active"><a href="#">Course Registration</a></li>
-                <li><a href="#">Registration Record</a></li>
+                <li><a href="registrationRecord.php">Registration Record</a></li>
                 <li><a href="#">Ticket</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -92,7 +92,7 @@ if(isset($_GET['add_course'])){
         }
 
         mysqli_select_db($db_connection, "crp");
-        $sql1 = 'select * from courses';
+        $sql1 = 'select * from course_offering';
         $result = mysqli_query($db_connection, $sql1);
         $no = 1;
         $total = 0;
@@ -115,12 +115,6 @@ if(isset($_GET['add_course'])){
             $no++;
         } ?>
         </tbody>
-        <!--        <tfoot>-->
-        <!--        <tr>-->
-        <!--            <th colspan="4">TOTAL</th>-->
-        <!--            <th>--><? //= number_format($total) ?><!--</th>-->
-        <!--        </tr>-->
-        <!--        </tfoot>-->
     </table>
 </div>
 
