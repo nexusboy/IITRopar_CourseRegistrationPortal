@@ -34,7 +34,7 @@ WHERE grades.id=$s_id;";
 
 $student_id = 1 ;
 $gpa = calc_gpa($db_connection,$student_id);
-echo "echoing outside ".$gpa;
+echo "GPA of the student".$gpa;
 
 
 ?>
