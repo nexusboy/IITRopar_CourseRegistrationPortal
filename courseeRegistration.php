@@ -92,7 +92,7 @@ if(isset($_GET['add_course'])){
         }
 
         mysqli_select_db($db_connection, "crp");
-        $sql1 = 'SELECT * FROM course_offering;';
+        $sql1 = 'SELECT * FROM course_offering ;';
         $result = mysqli_query($db_connection, $sql1);
         $no = 1;
         $total = 0;
