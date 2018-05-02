@@ -21,6 +21,7 @@ if (isset($_GET['logout'])) {
     <title>Welcome Student <?php
         echo $_SESSION['username'];
         ?></title>
+    <script src="universal_js.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -56,7 +57,6 @@ if (isset($_GET['logout'])) {
 
 <div class="container">
     <button id="myButton" onclick="viewCourses()">View_Courses</button>
-    <script src="universal_js.js"></script>
 </div>
 
 

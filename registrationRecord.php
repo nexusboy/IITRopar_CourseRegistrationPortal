@@ -22,10 +22,10 @@ if (isset($_GET['logout'])) {
     <title>Welcome Student <?php
         echo $_SESSION['username'];
         ?></title>
+    <script src="universal_js.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="universal_js.js"></script>
 </head>
 
 <body>
@@ -83,7 +83,7 @@ if (isset($_GET['logout'])) {
         mysqli_select_db($db_connection, "crp");
         $sql1 = 'SELECT courseid,credits,title
 FROM (SELECT courseid FROM enrolls INNER JOIN course_offering ON enrolls.courseid=course_offering.id
-WHERE enrolls.id=1) as lol INNER JOIN courses ON courseid=courses.id;';
+WHERE enrolls.id='.$username.') as lol INNER JOIN courses ON courseid=courses.id;';
         $result = mysqli_query($db_connection, $sql1);
         $no = 1;
         $credits = 0;
