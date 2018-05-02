@@ -1,16 +1,17 @@
 function addCourse(button) {
     var id = parseInt(button.id, 10);
-    //alert(id);
     var table = document.getElementById("table");
 
     var rowCollection = table.rows.item(id).cells;
     var courseSlot = rowCollection.item(4).innerText;
     console.log(courseSlot);
+    var course_id = rowCollection.item(1).innerText;
+    console.log(course_id);
 
     $.ajax({
         type: "POST",
         url: "insert.php",
-        data: {query: 'select * from courses', add_course: "1", course_id: id, course_slot: courseSlot},
+        data: {query: 'select * from courses', add_course: "1", course_id: course_id, course_slot: courseSlot},
         success: function (OUTPUT) {
             alert(OUTPUT);
             OUT = OUTPUT;
