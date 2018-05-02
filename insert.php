@@ -24,16 +24,28 @@ $courseID=$_POST['course_id'];
 $course_slot = $_POST['course_slot'];
 
 
-$query= 'SELECT * FROM (
-    SELECT slot
-FROM (SELECT courseid FROM enrolls WHERE id = 1) as loo INNER JOIN course_offering ON loo.courseid=course_offering.id) as loo
-WHERE slot ='.$course_slot;
+$sql1= "SELECT * FROM (
+SELECT slot
+FROM (SELECT courseid FROM enrolls WHERE id = $username ) as loo INNER JOIN course_offering ON loo.courseid=course_offering.id) as loo
+WHERE slot = '$course_slot' ";
 
-echo "$courseID in ineret";
-$result = mysqli_query($db_connection, $sql1);
-if (mysqli_num_rows($results) == 0 ) {
-    $q1 = 'INSERT INTO enrolls (id, courseid) VALUES ('.$username.','.$courseID.')';
-    mysqli_query($db_connection,$q1);
+
+$results = mysqli_query($db_connection,$sql1);
+if (!$results) {
+    printf("Error: %s\n", mysqli_error($db_connection));
+    exit();
+}
+
+if ( mysqli_num_rows($results) == 0 ) {
+   $q1 = "INSERT INTO enrolls (id, courseid) VALUES ( $username , '$courseID' )";
+  $results1 = mysqli_query($db_connection,$q1);
+    if (!$results1) {
+        printf("Error: %s\n", mysqli_error($db_connection));
+        exit();
+    }
+}
+elseif(mysqli_num_rows($results) == 1){
+    echo "Cannot add because the student has registered in same slot    ";
 }
 /*Write insert pending*/
 
@@ -43,7 +55,4 @@ if (mysqli_num_rows($results) == 0 ) {
 
 
 // No of credits + course_credits < credit_limit then insert
-
-$query = 'INSERT INTO enrolls(id, courseid) VALUES (' .$username.','.$courseID.');';
-mysqli_query($db_connection, $sql1);
 ?>
