@@ -16,11 +16,20 @@ if (!$db_connection) {
 mysqli_select_db($db_connection, "crp");
 $sql1 = "SELECT id,courseid,grade
 FROM grades
-WHERE id=$student_id/*Given by the Staff*/ and semester =7;"
+WHERE id=$student_id/*Given by the Staff*/ and semester =7;";
 $result = mysqli_query($db_connection, $sql1);
 $no = 1;
 $credits = 0;
 
+
+echo '<thead>
+        <tr>
+            <th>#</th>
+            <th>Student Id</th>
+            <th>Course Id</th>
+            <th>Grade</th>
+        </tr>
+        </thead>';
 while ($row = mysqli_fetch_row($result)) {
 
     echo '<tr>

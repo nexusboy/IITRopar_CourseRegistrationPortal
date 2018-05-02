@@ -45,12 +45,11 @@ function studentTranscript() {
         url: "studentTranscript.php",
         data: {student_id: id},
         success: function (OUTPUT) {
-            alert(OUTPUT);
+            // alert(OUTPUT);
             OUT = OUTPUT;
         },
         complete: function () {
-            document.getElementById("thisdiv").innerHTML = OUT;
-            document.getElementById("thisdiv").style.background = "green";
+            document.getElementById("studentTranscriptTable").innerHTML = OUT;
         }
     });
     console.log(id);
@@ -68,7 +67,6 @@ function viewCourses() {
         },
         complete: function () {
             document.getElementById("thisdiv").innerHTML = OUT;
-            document.getElementById("thisdiv").style.background = "green";
 
         }
     });
