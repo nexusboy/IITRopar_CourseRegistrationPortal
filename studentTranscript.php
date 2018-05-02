@@ -57,9 +57,3 @@ WHERE grades.id=$s_id;";
     return $row[0];
 }
 
-
-
-$student_id = 1 ;
-$gpa = calc_gpa($db_connection,$student_id);
-echo "GPA of the student".$gpa;
-?>
