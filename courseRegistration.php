@@ -92,7 +92,7 @@ if(isset($_GET['add_course'])){
         }
 
         mysqli_select_db($db_connection, "crp");
-        $sql1 = 'select * from course_offering';
+        $sql1 = 'SELECT course_offering.id,title,credits,slot,ltp FROM course_offering INNER JOIN courses ON courses.id=course_offering.id ;';
         $result = mysqli_query($db_connection, $sql1);
         $no = 1;
         $total = 0;
