@@ -43,7 +43,7 @@ function studentTranscript() {
     $.ajax({
         type: "POST",
         url: "studentTranscript.php",
-        data: {},
+        data: {student_id: id},
         success: function (OUTPUT) {
             alert(OUTPUT);
             OUT = OUTPUT;
@@ -51,7 +51,6 @@ function studentTranscript() {
         complete: function () {
             document.getElementById("thisdiv").innerHTML = OUT;
             document.getElementById("thisdiv").style.background = "green";
-
         }
     });
     console.log(id);

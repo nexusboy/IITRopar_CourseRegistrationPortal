@@ -65,6 +65,9 @@ if (isset($_GET['logout'])) {
         <input type="text" class="form-control" id="course_id" placeholder="course id">
     </div>
 
+    <table class="table table-striped" id="studentTranscriptTable">
+
+    </table>
     <button class="btn btn-primary" onclick="studentTranscript()">Submit</button>
 
 
