@@ -12,8 +12,6 @@ if (isset($_GET['logout'])) {
     unset($_SESSION['username']);
     header("location: login.php");
 }
-
-
 ?>
 
 
@@ -23,11 +21,10 @@ if (isset($_GET['logout'])) {
     <title>Welcome Student <?php
         echo $_SESSION['username'];
         ?></title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="universal_js.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -61,7 +58,6 @@ if (isset($_GET['logout'])) {
 <div class="container">
 
     <button id="myButton" onclick="viewCourses()">View_Courses</button>
-    <script src="universal_js.js"></script>
 
     <h2>All Courses</h2>
     <table class="table table-striped">
