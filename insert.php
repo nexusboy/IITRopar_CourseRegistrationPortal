@@ -21,8 +21,20 @@ mysqli_select_db($db_connection, "crp");
 
 $courseID=$_POST['course_id'];
 
-echo "$courseID in ineret";
+$course_slot = $_POST['course_slot'];
 
+
+$query= 'SELECT * FROM (
+    SELECT slot
+FROM (SELECT courseid FROM enrolls WHERE id = 1) as loo INNER JOIN course_offering ON loo.courseid=course_offering.id) as loo
+WHERE slot ='.$course_slot;
+
+echo "$courseID in ineret";
+$result = mysqli_query($db_connection, $sql1);
+if (mysqli_num_rows($results) == 0 ) {
+    $q1 = 'INSERT INTO enrolls (id, courseid) VALUES ('.$username.','.$courseID.')';
+    mysqli_query($db_connection,$q1);
+}
 /*Write insert pending*/
 
 
