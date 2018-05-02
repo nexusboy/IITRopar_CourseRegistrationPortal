@@ -12,11 +12,6 @@ if (isset($_GET['logout'])) {
     unset($_SESSION['username']);
     header("location: login.php");
 }
-
-if (isset($_GET['add_course'])) {
-    $baby = $_GET['course_id'];
-    echo $baby;
-}
 ?>
 
 
@@ -26,7 +21,6 @@ if (isset($_GET['add_course'])) {
     <title>Welcome Student <?php
         echo $_SESSION['username'];
         ?></title>
-    <!--    <script src="https://code.jquery.com/jquery.min.js"></script>-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -79,7 +73,6 @@ if (isset($_GET['add_course'])) {
             <th>Credits</th>
             <th>Slot</th>
             <th>LTP</th>
-
         </tr>
         </thead>
         <tbody>
@@ -112,7 +105,7 @@ if (isset($_GET['add_course'])) {
 					<td>' . $row[3] . '</td>
 					<td>' . $row[4] . '</td>
 
-					<td><button class="btn btn-primary" id = ' . $no . ' onclick="addCourse(this  )">Add</button></td>
+					<td><button class="btn btn-primary" id = ' . $no . ' onclick="addCourse(this)">Add</button></td>
 				</tr>';
 
             $no++;

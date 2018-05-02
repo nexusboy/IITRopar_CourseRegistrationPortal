@@ -22,10 +22,10 @@ if (isset($_GET['logout'])) {
     <title>Welcome Student <?php
         echo $_SESSION['username'];
         ?></title>
-    <!--    <script src="https://code.jquery.com/jquery.min.js"></script>-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="universal_js.js"></script>
 </head>
 
 <body>
@@ -59,7 +59,7 @@ if (isset($_GET['logout'])) {
 <div class="container">
 
     <h1>Registered Courses</h1>
-    <table class="table table-striped ">
+    <table class="table table-striped" id="table">
         <caption class="title"></caption>
         <thead>
         <tr>
@@ -96,7 +96,7 @@ WHERE enrolls.id=1) as lol INNER JOIN courses ON courseid=courses.id;';
 					<td>' . $row[1] . '</td>
 					<td>' . $row[2] . '</td>
 
-					<td><button class="btn btn-danger" id = ' . $row[0] . ' onclick="dropCourse(this)">Drop</button></td>
+                    <td><button class="btn btn-danger" id = ' . $no . ' onclick="dropCourse(this)">Drop</button></td>
 				</tr>';
             $no++;
             $credits = $credits + $row[1];
