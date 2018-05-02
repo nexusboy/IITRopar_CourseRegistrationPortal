@@ -64,14 +64,15 @@ if (isset($_GET['logout'])) {
     <script src="universal_js.js"></script>
 
     <h2>All Courses</h2>
-    <table class="table table-striped table-bordered">
+    <table class="table table-striped">
         <caption class="title"></caption>
         <thead>
         <tr>
             <th>#</th>
             <th>Course Id</th>
+            <th>Name</th>
             <th>Credits</th>
-            <th>Course Name</th>
+            <th>Slot</th>
         </tr>
         </thead>
         <tbody>
@@ -96,8 +97,9 @@ if (isset($_GET['logout'])) {
             echo '<tr>
 					<td>' . $no . '</td>
 					<td>' . $row[0] . '</td>
-					<td>' . $row[4] . '</td>
 					<td>' . $row[2] . '</td>
+					<td>' . $row[4] . '</td>
+					<td>' . $row[1] . '</td>
 				</tr>';
             $no++;
         } ?>
