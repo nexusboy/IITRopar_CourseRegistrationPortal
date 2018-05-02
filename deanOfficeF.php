@@ -17,7 +17,7 @@ mysqli_select_db($db_connection, "crp");
 
 function calc_gpa($db_conncection,$s_id){
     $query = "SELECT sum(grade*grades.credits)/SUM(grades.credits) FROM grades INNER JOIN courses ON grades.courseid = courses.id
-WHERE grades.id=$s_id/*Student ID entry by form*/;";
+WHERE grades.id=$s_id;";
     $query_run =  mysqli_query($db_conncection,$query);
     if(!$query_run)
     {

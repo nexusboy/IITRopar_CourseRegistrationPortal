@@ -83,7 +83,7 @@ if (isset($_GET['logout'])) {
         mysqli_select_db($db_connection, "crp");
         $sql1 = 'SELECT courseid,credits,title
 FROM (SELECT courseid FROM enrolls INNER JOIN course_offering ON enrolls.courseid=course_offering.id
-WHERE enrolls.id=1) as lol INNER JOIN courses ON courseid=courses.id;';
+WHERE enrolls.id='.$username.') as lol INNER JOIN courses ON courseid=courses.id;';
         $result = mysqli_query($db_connection, $sql1);
         $no = 1;
         $credits = 0;

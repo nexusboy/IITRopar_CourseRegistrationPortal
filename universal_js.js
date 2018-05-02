@@ -37,6 +37,10 @@ function dropCourse(button) {
     });
 }
 
+function studentTranscript() {
+    var id = document.getElementById()
+}
+
 function viewCourses() {
     var OUT;
     $.ajax({
