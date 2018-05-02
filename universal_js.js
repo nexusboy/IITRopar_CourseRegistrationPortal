@@ -1,10 +1,37 @@
-function addCourse(course_id) {
-    var courseId = course_id.id;
+function addCourse(button) {
+    var id = parseInt(button.id, 10);
+    //alert(id);
+    var table = document.getElementById("table");
+    var courseId = "";
+
+    //console.log(table.rows[id]);
+
+    var rowCollection = table.rows.item(id).cells;
+    var courseSlot = rowCollection.item(4).innerText;
+    console.log(courseSlot);
 
     $.ajax({
         type: "POST",
         url: "insert.php",
-        data: {query: 'select * from courses', add_course: "1", course_id:courseId},
+        data: {query: 'select * from courses', add_course: "1", course_id: courseId, course_slot: courseSlot},
+        success: function (OUTPUT) {
+            alert(OUTPUT);
+            OUT = OUTPUT;
+        },
+        complete: function () {
+
+
+        }
+    });
+}
+
+function dropCourse(course_id) {
+    var courseId = course_id.id;
+    alert(courseId);
+    $.ajax({
+        type: "POST",
+        url: "insert.php",
+        data: {query: 'select * from courses', add_course: "1", course_id: courseId},
         success: function (OUTPUT) {
             alert(OUTPUT);
             OUT = OUTPUT;
