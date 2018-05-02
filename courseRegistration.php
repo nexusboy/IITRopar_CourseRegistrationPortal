@@ -13,7 +13,7 @@ if (isset($_GET['logout'])) {
     header("location: login.php");
 }
 
-if(isset($_GET['add_course'])){
+if (isset($_GET['add_course'])) {
     $baby = $_GET['course_id'];
     echo $baby;
 }
@@ -69,14 +69,16 @@ if(isset($_GET['add_course'])){
 <div class="container">
 
     <h1>Courses offered this semester</h1>
-    <table class="table table-striped ">
+    <table class="table table-striped" id="table">
         <caption class="title"></caption>
         <thead>
         <tr>
             <th>#</th>
             <th>Course Id</th>
-            <th>Credits</th>
             <th>Name</th>
+            <th>Credits</th>
+            <th>Slot</th>
+            <th>LTP</th>
 
         </tr>
         </thead>
@@ -102,13 +104,15 @@ if(isset($_GET['add_course'])){
 
             $variable = '' . $row[0];
 
-            echo '<tr>
+            echo '<tr id=' . $no . '>
 					<td>' . $no . '</td>
 					<td>' . $row[0] . '</td>
-					<td>' . $row[4] . '</td>
+					<td>' . $row[1] . '</td>
 					<td>' . $row[2] . '</td>
+					<td>' . $row[3] . '</td>
+					<td>' . $row[4] . '</td>
 
-					<td><button class="btn btn-primary" id = ' . $row[0] . ' onclick="addCourse(this,)">Add</button></td>
+					<td><button class="btn btn-primary" id = ' . $no . ' onclick="addCourse(this  )">Add</button></td>
 				</tr>';
 
             $no++;

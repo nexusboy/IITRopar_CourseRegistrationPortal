@@ -96,7 +96,7 @@ WHERE enrolls.id=1) as lol INNER JOIN courses ON courseid=courses.id;';
 					<td>' . $row[1] . '</td>
 					<td>' . $row[2] . '</td>
 
-					<td><button class="btn btn-danger" id = ' . $row[0] . ' onclick="addCourse(this)">Drop</button></td>
+					<td><button class="btn btn-danger" id = ' . $row[0] . ' onclick="dropCourse(this)">Drop</button></td>
 				</tr>';
             $no++;
             $credits = $credits + $row[1];
