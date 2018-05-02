@@ -1,9 +1,9 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Don
- * Date: 5/1/2018
- * Time: 1:37 PM
+ * User: merah
+ * Date: 02-May-18
+ * Time: 12:49 AM
  */
 session_start();
 if (isset($_GET['logout'])) {
@@ -13,7 +13,10 @@ if (isset($_GET['logout'])) {
     header("location: login.php");
 }
 
-
+if(isset($_GET['add_course'])){
+    $baby = $_GET['course_id'];
+    echo $baby;
+}
 ?>
 
 
@@ -23,11 +26,10 @@ if (isset($_GET['logout'])) {
     <title>Welcome Student <?php
         echo $_SESSION['username'];
         ?></title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <!--    <script src="https://code.jquery.com/jquery.min.js"></script>-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -46,8 +48,8 @@ if (isset($_GET['logout'])) {
         <!-- Collection of nav links and other content for toggling -->
         <div id="navbarCollapse" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Courses</a></li>
-                <li><a href="courseeRegistration.php">Course Registration</a></li>
+                <li><a href="studentloggedIn.php">Courses</a></li>
+                <li class="active"><a href="#">Course Registration</a></li>
                 <li><a href="#">Registration Record</a></li>
                 <li><a href="#">Ticket</a></li>
             </ul>
@@ -59,15 +61,23 @@ if (isset($_GET['logout'])) {
 </nav>
 
 <div class="container">
-    <h2>All Courses</h2>
-    <table class="table table-striped table-bordered">
+    <button id="myButton" onclick="viewCourses()">View_Courses</button>
+    <script src="universal_js.js"></script>
+</div>
+
+
+<div class="container">
+
+    <h1>Courses offered this semester</h1>
+    <table class="table table-striped ">
         <caption class="title"></caption>
         <thead>
         <tr>
             <th>#</th>
             <th>Course Id</th>
             <th>Credits</th>
-            <th>Course Name</th>
+            <th>Name</th>
+
         </tr>
         </thead>
         <tbody>
@@ -87,17 +97,30 @@ if (isset($_GET['logout'])) {
         $no = 1;
         $total = 0;
 
+
         while ($row = mysqli_fetch_row($result)) {
+
+            $variable = '' . $row[0];
 
             echo '<tr>
 					<td>' . $no . '</td>
 					<td>' . $row[0] . '</td>
 					<td>' . $row[4] . '</td>
 					<td>' . $row[2] . '</td>
+
+					<td><button class="btn btn-primary" id = ' . $row[0] . ' onclick="addCourse(this,)">Add</button></td>
+					<a href="courseeRegistration.php?add_course=\'1\'?course_id=' . $row[0] . '" style="color: red;">Logout</a>
 				</tr>';
+
             $no++;
         } ?>
         </tbody>
+        <!--        <tfoot>-->
+        <!--        <tr>-->
+        <!--            <th colspan="4">TOTAL</th>-->
+        <!--            <th>--><? //= number_format($total) ?><!--</th>-->
+        <!--        </tr>-->
+        <!--        </tfoot>-->
     </table>
 </div>
 
