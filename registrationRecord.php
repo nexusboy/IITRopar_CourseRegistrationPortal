@@ -86,27 +86,25 @@ FROM (SELECT courseid FROM enrolls INNER JOIN course_offering ON enrolls.coursei
 WHERE enrolls.id=1) as lol INNER JOIN courses ON courseid=courses.id;';
         $result = mysqli_query($db_connection, $sql1);
         $no = 1;
-        $total = 10;
+        $credits = 0;
 
         while ($row = mysqli_fetch_row($result)) {
-
-            $variable = '' . $row[0];
 
             echo '<tr>
 					<td>' . $no . '</td>
 					<td>' . $row[0] . '</td>
-					<td>' . $row[4] . '</td>
+					<td>' . $row[1] . '</td>
 					<td>' . $row[2] . '</td>
 
 					<td><button class="btn btn-danger" id = ' . $row[0] . ' onclick="addCourse(this)">Drop</button></td>
 				</tr>';
             $no++;
+            $credits = $credits + $row[1];
         } ?>
         </tbody>
         <tfoot>
         <tr>
-            <th colspan="4">REGISTERED CREDITS</th>
-            <th><? number_format($total) ?></th>
+            <th colspan="4">REGISTERED CREDITS : <?php echo number_format($credits) ?></th>
         </tr>
         </tfoot>
     </table>
