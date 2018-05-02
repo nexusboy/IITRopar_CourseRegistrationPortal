@@ -41,6 +41,12 @@ if(isset($_POST['login_user'])){
                 header('location: teacherLoggedIn.php');
                 echo "login succesful";
             }
+            if(strcmp($r['type'],"deanstaff") == 0 ) {
+                $_SESSION['username'] = $username;
+                $_SESSION['success'] = "You are now logged in";
+                header('location: staffOfDeanPage.php');
+                echo "login succesful";
+            }
         }
         else {
             array_push($errors, "Wrong username/password combination");
