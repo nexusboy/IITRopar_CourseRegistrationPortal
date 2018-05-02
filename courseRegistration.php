@@ -13,6 +13,10 @@ if (isset($_GET['logout'])) {
     header("location: login.php");
 }
 
+if(isset($_GET['add_course'])){
+    $baby = $_GET['course_id'];
+    echo $baby;
+}
 ?>
 
 
@@ -46,7 +50,7 @@ if (isset($_GET['logout'])) {
             <ul class="nav navbar-nav">
                 <li><a href="studentloggedIn.php">Courses</a></li>
                 <li class="active"><a href="#">Course Registration</a></li>
-                <li><a href="registrationRecord.php">Registration Record</a></li>
+                <li><a href="#">Registration Record</a></li>
                 <li><a href="#">Ticket</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -104,9 +108,9 @@ if (isset($_GET['logout'])) {
 					<td>' . $row[4] . '</td>
 					<td>' . $row[2] . '</td>
 
-					<td><button class="btn btn-primary" id = ' . $row[0] . ' onclick="addCourse(this)">Add</button></td>
+					<td><button class="btn btn-primary" id = ' . $row[0] . ' onclick="addCourse(this,)">Add</button></td>
+					<a href="courseeRegistration.php?add_course=\'1\'?course_id=' . $row[0] . '" style="color: red;">Logout</a>
 				</tr>';
-//            <a href="courseRegistration.php?add_course=\'1\'?course_id=' . $row[0] . '" style="color: red;">Logout</a>
 
             $no++;
         } ?>
