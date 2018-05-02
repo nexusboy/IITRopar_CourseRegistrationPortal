@@ -4,9 +4,9 @@ function addCourse(button) {
 
     var rowCollection = table.rows.item(id).cells;
     var courseSlot = rowCollection.item(4).innerText;
-    console.log(courseSlot);
+    //console.log(courseSlot);
     var course_id = rowCollection.item(1).innerText;
-    console.log(course_id);
+    //console.log(course_id);
 
     $.ajax({
         type: "POST",
@@ -23,7 +23,7 @@ function addCourse(button) {
     });
 }
 
-function dropCourse(course_id) {
+function dropCourse(button) {
     var courseId = course_id.id;
     alert(courseId);
     $.ajax({

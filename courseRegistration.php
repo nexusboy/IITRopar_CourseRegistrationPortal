@@ -112,7 +112,7 @@ if (isset($_GET['add_course'])) {
 					<td>' . $row[3] . '</td>
 					<td>' . $row[4] . '</td>
 
-					<td><button class="btn btn-primary" id = ' . $no . ' onclick="addCourse(this  )">Add</button></td>
+					<td><button class="btn btn-primary" id = ' . $no . ' onclick="addCourse(this)">Add</button></td>
 				</tr>';
 
             $no++;
