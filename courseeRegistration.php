@@ -92,7 +92,7 @@ if(isset($_GET['add_course'])){
         }
 
         mysqli_select_db($db_connection, "crp");
-        $sql1 = 'select * from courses';
+        $sql1 = 'SELECT * FROM course_offering;';
         $result = mysqli_query($db_connection, $sql1);
         $no = 1;
         $total = 0;
@@ -109,7 +109,6 @@ if(isset($_GET['add_course'])){
 					<td>' . $row[2] . '</td>
 
 					<td><button class="btn btn-primary" id = ' . $row[0] . ' onclick="addCourse(this,)">Add</button></td>
-					<a href="courseeRegistration.php?add_course=\'1\'?course_id=' . $row[0] . '" style="color: red;">Logout</a>
 				</tr>';
 
             $no++;
