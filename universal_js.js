@@ -1,11 +1,12 @@
 function addCourse(course_id) {
-    var courseId = course_id.toString();
+    var courseId = course_id.id;
+
     $.ajax({
         type: "POST",
-        url: "courseeRegistration.php",
-        data: {query: 'select * from courses', add_course: "1", courseid: courseId},
+        url: "insert.php",
+        data: {query: 'select * from courses', add_course: "1", course_id:courseId},
         success: function (OUTPUT) {
-          //  alert(OUTPUT);
+            alert(OUTPUT);
             OUT = OUTPUT;
         },
         complete: function () {
