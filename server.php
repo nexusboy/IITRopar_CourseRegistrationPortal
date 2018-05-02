@@ -25,7 +25,7 @@ if(isset($_POST['login_user'])){
     }
 
     if (count($errors) == 0 ) {
-        $query = "SELECT * FROM university_model.user_list WHERE username=$username AND password='$password'";
+        $query = "SELECT * FROM user_list WHERE username=$username AND password='$password'";
         $results = mysqli_query($db_connection, $query);
         if (mysqli_num_rows($results) == 1 ) {
             $r = mysqli_fetch_assoc($results);

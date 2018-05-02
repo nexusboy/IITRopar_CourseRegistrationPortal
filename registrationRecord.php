@@ -1,9 +1,9 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Don
- * Date: 5/1/2018
- * Time: 1:37 PM
+ * User: merah
+ * Date: 02-May-18
+ * Time: 6:25 AM
  */
 session_start();
 if (isset($_GET['logout'])) {
@@ -12,7 +12,6 @@ if (isset($_GET['logout'])) {
     unset($_SESSION['username']);
     header("location: login.php");
 }
-
 
 ?>
 
@@ -23,11 +22,10 @@ if (isset($_GET['logout'])) {
     <title>Welcome Student <?php
         echo $_SESSION['username'];
         ?></title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <!--    <script src="https://code.jquery.com/jquery.min.js"></script>-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -46,9 +44,9 @@ if (isset($_GET['logout'])) {
         <!-- Collection of nav links and other content for toggling -->
         <div id="navbarCollapse" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Courses</a></li>
-                <li><a href="courseeRegistration.php">Course Registration</a></li>
-                <li><a href="#">Registration Record</a></li>
+                <li><a href="studentloggedIn.php">Courses</a></li>
+                <li><a href="courseRegistration.php">Course Registration</a></li>
+                <li class="active"><a href="#">Registration Record</a></li>
                 <li><a href="#">Ticket</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -59,15 +57,16 @@ if (isset($_GET['logout'])) {
 </nav>
 
 <div class="container">
-    <h2>All Courses</h2>
-    <table class="table table-striped table-bordered">
+
+    <h1>Registered Courses</h1>
+    <table class="table table-striped ">
         <caption class="title"></caption>
         <thead>
         <tr>
             <th>#</th>
             <th>Course Id</th>
             <th>Credits</th>
-            <th>Course Name</th>
+            <th>Name</th>
         </tr>
         </thead>
         <tbody>
@@ -82,22 +81,34 @@ if (isset($_GET['logout'])) {
         }
 
         mysqli_select_db($db_connection, "crp");
-        $sql1 = 'select * from courses';
+        $sql1 = 'SELECT courseid,credits,title
+FROM (SELECT courseid FROM enrolls INNER JOIN course_offering ON enrolls.courseid=course_offering.id
+WHERE enrolls.id=1) as lol INNER JOIN courses ON courseid=courses.id;';
         $result = mysqli_query($db_connection, $sql1);
         $no = 1;
-        $total = 0;
+        $total = 10;
 
         while ($row = mysqli_fetch_row($result)) {
+
+            $variable = '' . $row[0];
 
             echo '<tr>
 					<td>' . $no . '</td>
 					<td>' . $row[0] . '</td>
 					<td>' . $row[4] . '</td>
 					<td>' . $row[2] . '</td>
+
+					<td><button class="btn btn-danger" id = ' . $row[0] . ' onclick="addCourse(this)">Drop</button></td>
 				</tr>';
             $no++;
         } ?>
         </tbody>
+        <tfoot>
+        <tr>
+            <th colspan="4">REGISTERED CREDITS</th>
+            <th><? number_format($total) ?></th>
+        </tr>
+        </tfoot>
     </table>
 </div>
 
