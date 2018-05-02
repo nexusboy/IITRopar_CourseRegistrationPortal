@@ -12,6 +12,9 @@ if (isset($_GET['logout'])) {
     unset($_SESSION['username']);
     header("location: login.php");
 }
+
+
+
 ?>
 
 
@@ -34,6 +37,20 @@ if (isset($_GET['logout'])) {
 <?php endif ?>
 
 <button id = "myButton" onclick="viewCourses()">View_Courses</button>
+<div id= "AllCourses"></div>
+<button id = "coursesOfferedButton" onclick="coursesOffered()">Courses_Offered</button>
+<div id= "CoursesOffered"></div>
 <script src ="universal_js.js"></script>
+
+<form method="post" action="new_insert.php">
+    <?php include('errors.php'); ?>
+    <div class="input-group">
+        <label>COURSE_NUMBER</label>
+        <input type="text" name="username" >
+    </div>
+    <div class="input-group">
+        <button type="submit" class="btn" name="login_user">Login</button>
+    </div>
+</form>
 </body>
 </html>
