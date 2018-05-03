@@ -10,7 +10,7 @@
 $student_id = $_POST['student_id'];
 $teacher_id = $_POST['faculty_id'];
 $course_id = $_POST['course_id'];
-$dean_id = 7;
+$dean_id = 9;
 
 $db_connection = mysqli_connect('localhost', 'root', '', 'university_database');
 // Check The Connection

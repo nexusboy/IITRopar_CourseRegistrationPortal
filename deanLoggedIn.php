@@ -96,8 +96,8 @@ if (isset($_GET['logout'])) {
 					<td>' . $row[2] . '</td>
 					<td>' . $row[3] . '</td>
 					
-					<td><button class="btn btn-success" id = ' . $no . ' onclick="ticketApprove(this)">Approve</button></td>
-					<td><button class="btn btn-danger" id = ' . $no . ' onclick="ticketDisapprove(this)">Decline</button></td>
+					<td><button class="btn btn-success" id = ' . $no . ' onclick="D_ticketApprove(this)">Approve</button></td>
+					<td><button class="btn btn-danger" id = ' . $no . ' onclick="D_TicketDisapprove(this)">Decline</button></td>
 
 				</tr>';
             $no++;
