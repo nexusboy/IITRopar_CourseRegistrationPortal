@@ -35,9 +35,10 @@ if (!$results) {
     printf("Error: %s\n", mysqli_error($db_connection));
     exit();
 }
-
+/* If there is no slot clash */
 if ( mysqli_num_rows($results) == 0 ) {
-   $q1 = "INSERT INTO enrolls (id, courseid) VALUES ( $username , '$courseID' )";
+    /*Get the credit limit*/
+    $q1 = "INSERT INTO enrolls (id, courseid) VALUES ( $username , '$courseID' )";
   $results1 = mysqli_query($db_connection,$q1);
     if (!$results1) {
         printf("Error: %s\n", mysqli_error($db_connection));
