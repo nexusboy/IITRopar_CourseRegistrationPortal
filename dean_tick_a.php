@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Don
- * Date: 5/3/2018
- * Time: 8:55 AM
- */
 
 /*This PHP file is for if faculty approves ticket */
 $student_id = 1 ;
@@ -24,14 +18,24 @@ $q_update_table =  "UPDATE ticket_table
 SET Current_Status='dissaproved'
 WHERE student_id = $student_id AND faculty_id = $teacher_id AND course_number='$course_id'";
 
-$query_run =  mysqli_query($db_connection,$f_query);
+$query_run =  mysqli_query($db_connection,$q_update_table);
 if(!$query_run)
 {
     echo "Error: " . mysqli_error($db_connection);;
     exit();
-}else{
-    echo "ticket dissaproved successfully";
 }
-
+$q_insert_en= "INSERT INTO enrolls (id, courseid) VALUES ($student_id/*Student id goes here*/,'$course_id'/*Course id goes here*/);";
+$query_run1 =  mysqli_query($db_connection,$q_update_table);
+if(!$query_run1)
+{
+    echo "Error: " . mysqli_error($db_connection);;
+    exit();
+}
+if($query_run and $query_run1){
+    echo "ticket approved successfully";
+}
 mysqli_close($db_connection);
+
+
+
 ?>

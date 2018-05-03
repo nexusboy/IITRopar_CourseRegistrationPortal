@@ -24,7 +24,7 @@ $q_update_table =  "UPDATE ticket_table
 SET faculty_id= $dean_id
 WHERE student_id = $student_id AND faculty_id = $teacher_id AND course_number='$course_id';";
 
-$query_run =  mysqli_query($db_connection,$f_query);
+$query_run =  mysqli_query($db_connection,$q_update_table );
 if(!$query_run)
 {
     echo "Error: " . mysqli_error($db_connection);;

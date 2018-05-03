@@ -3,9 +3,8 @@
  * Created by PhpStorm.
  * User: Don
  * Date: 5/3/2018
- * Time: 8:55 AM
+ * Time: 10:03 AM
  */
-
 /*This PHP file is for if faculty approves ticket */
 $student_id = 1 ;
 $teacher_id = 2 ;
