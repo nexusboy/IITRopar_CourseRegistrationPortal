@@ -41,19 +41,4 @@ while ($row = mysqli_fetch_row($result)) {
     $no++;
     $credits = $credits + $row[1];
 }
-
-function calc_gpa($db_conncection,$s_id){
-    $query = "SELECT sum(grade*grades.credits)/SUM(grades.credits) FROM grades INNER JOIN courses ON grades.courseid = courses.id
-WHERE grades.id=$s_id;";
-    $query_run =  mysqli_query($db_conncection,$query);
-    if(!$query_run)
-    {
-        echo "Error: " . mysqli_error($db_conncection);;
-        exit();
-    }
-
-    while ($row = mysqli_fetch_row($query_run)) {
-    }
-    return $row[0];
-}
-
+?>

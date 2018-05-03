@@ -55,4 +55,4 @@ elseif(mysqli_num_rows($results) == 1){
 
 
 // No of credits + course_credits < credit_limit then insert
-?>0
+?>
