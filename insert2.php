@@ -95,7 +95,7 @@ WHERE id=$username;";
         }
         $advisor_id = $rows[0]['fid'];/*Got the credit limit*/
 
-        $q1 = "INSERT INTO ticket_table(student_id, faculty_id, course_number,description) VALUES ($username,$advisor_id,'$courseID','Credit Limit Problem');";
+        $q1 = "INSERT INTO ticket_table(student_id, faculty_id, course_number,description,Current_Status) VALUES ($username,$advisor_id,'$courseID','Credit Limit Problem','In Progress');";
         $results1 = mysqli_query($db_connection,$q1);
         if (!$results1) {
             printf("Error: %s\n", mysqli_error($db_connection));
