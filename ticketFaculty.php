@@ -104,6 +104,7 @@ VALUES ('$course_code',$semester,'$room_number','$slot',$cgpa_limit,$number_of_s
         </tr>
         </thead>
         <tbody>
+
         <?php
 
         $username = $_SESSION['username'];
