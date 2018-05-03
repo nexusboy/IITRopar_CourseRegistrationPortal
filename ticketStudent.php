@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: merah
- * Date: 02-May-18
- * Time: 6:25 AM
+ * Date: 03-May-18
+ * Time: 7:12 AM
  */
 session_start();
 if (isset($_GET['logout'])) {
@@ -12,7 +12,6 @@ if (isset($_GET['logout'])) {
     unset($_SESSION['username']);
     header("location: login.php");
 }
-
 ?>
 
 
@@ -46,8 +45,8 @@ if (isset($_GET['logout'])) {
             <ul class="nav navbar-nav">
                 <li><a href="studentloggedIn.php">Courses</a></li>
                 <li><a href="courseRegistration.php">Course Registration</a></li>
-                <li class="active"><a href="#">Registration Record</a></li>
-                <li><a href="ticketStudent.php">Ticket</a></li>
+                <li><a href="registrationRecord.php">Registration Record</a></li>
+                <li class="active"><a href="#">Ticket</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="studentloggedIn.php?logout='1'" style="color: red;">Logout</a></li>
@@ -58,15 +57,18 @@ if (isset($_GET['logout'])) {
 
 <div class="container">
 
-    <h1>Registered Courses</h1>
-    <table class="table table-striped" id="table">
+    <!--    <button id="myButton" onclick="viewCourses()">View_Courses</button>-->
+
+    <h2>All Courses</h2>
+    <table class="table table-striped">
         <caption class="title"></caption>
         <thead>
         <tr>
             <th>#</th>
+            <th>Student Id</th>
+            <th>Faculty Id</th>
             <th>Course Id</th>
-            <th>Credits</th>
-            <th>Name</th>
+            <th>Ticket Description</th>
         </tr>
         </thead>
         <tbody>
@@ -81,12 +83,10 @@ if (isset($_GET['logout'])) {
         }
 
         mysqli_select_db($db_connection, "crp");
-        $sql1 = 'SELECT courseid,credits,title
-FROM (SELECT courseid FROM enrolls INNER JOIN course_offering ON enrolls.courseid=course_offering.id
-WHERE enrolls.id='.$username.') as lol INNER JOIN courses ON courseid=courses.id;';
+        $sql1 = 'SELECT * FROM ticket_table WHERE student_id=' . $username . ' ;';
         $result = mysqli_query($db_connection, $sql1);
         $no = 1;
-        $credits = 0;
+        $total = 0;
 
         while ($row = mysqli_fetch_row($result)) {
 
@@ -95,18 +95,11 @@ WHERE enrolls.id='.$username.') as lol INNER JOIN courses ON courseid=courses.id
 					<td>' . $row[0] . '</td>
 					<td>' . $row[1] . '</td>
 					<td>' . $row[2] . '</td>
-
-                    <td><button class="btn btn-danger" id = ' . $no . ' onclick="dropCourse(this)">Drop</button></td>
+					<td>' . $row[3] . '</td>
 				</tr>';
             $no++;
-            $credits = $credits + $row[1];
         } ?>
         </tbody>
-        <tfoot>
-        <tr>
-            <th colspan="4">TOTAL CREDITS : <?php echo number_format($credits) ?></th>
-        </tr>
-        </tfoot>
     </table>
 </div>
 

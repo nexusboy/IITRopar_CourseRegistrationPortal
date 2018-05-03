@@ -71,7 +71,7 @@ VALUES ( $student_id , $cur_semester , '$course_id'  ,  $grade , $credits)";
             <ul class="nav navbar-nav">
                 <li><a href="teacherLoggedIn.php">My Courses</a></li>
                 <li class="active"><a href="facultyGradeEntry.php">Grade</a></li>
-                <li><a href="#">Ticket</a></li>
+                <li><a href="ticketFaculty.php">Ticket</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="studentloggedIn.php?logout='1'" style="color: red;">Logout</a></li>

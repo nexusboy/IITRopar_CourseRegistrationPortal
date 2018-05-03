@@ -77,7 +77,7 @@ VALUES ('$course_code',$semester,'$room_number','$slot',$cgpa_limit,$number_of_s
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">My Courses</a></li>
                 <li><a href="facultyGradeEntry.php">Grade</a></li>
-                <li><a href="#">Ticket</a></li>
+                <li><a href="ticketFaculty.php">Ticket</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="studentloggedIn.php?logout='1'" style="color: red;">Logout</a></li>
