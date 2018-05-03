@@ -39,7 +39,7 @@ if (isset($_GET['logout'])) {
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="#" class="navbar-brand">Dean</a>
+            <a href="#" class="navbar-brand">DEAN OFFICE</a>
         </div>
         <!-- Collection of nav links and other content for toggling -->
         <div id="navbarCollapse" class="collapse navbar-collapse">

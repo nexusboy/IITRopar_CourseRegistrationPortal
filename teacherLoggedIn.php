@@ -70,7 +70,7 @@ VALUES ('$course_code',$semester,'$room_number','$slot',$cgpa_limit,$number_of_s
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="#" class="navbar-brand">Moodle</a>
+            <a href="#" class="navbar-brand">FACULTY</a>
         </div>
         <!-- Collection of nav links and other content for toggling -->
         <div id="navbarCollapse" class="collapse navbar-collapse">
