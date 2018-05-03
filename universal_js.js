@@ -23,14 +23,15 @@ function dropCourse(button) {
     var table = document.getElementById("table");
     var rowCollection = table.rows.item(id).cells;
     var course_id = rowCollection.item(1).innerText;
-    alert(course_id);
+    //alert(course_id);
 
     $.ajax({
         type: "POST",
-        url: "dropStudent.php",
+        url: "drop_s_course.php",
         data: {query: 'select * from courses', drop_course: "1", course_id: course_id},
         success: function (OUTPUT) {
             OUT = OUTPUT;
+            alert("drop success")
         },
         complete: function () {
         }

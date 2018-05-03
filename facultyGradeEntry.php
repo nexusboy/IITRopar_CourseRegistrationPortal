@@ -64,14 +64,14 @@ VALUES ( $student_id , $cur_semester , '$course_id'  ,  $grade , $credits)";
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="#" class="navbar-brand">Moodle</a>
+            <a href="#" class="navbar-brand">FACULTY</a>
         </div>
         <!-- Collection of nav links and other content for toggling -->
         <div id="navbarCollapse" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li><a href="teacherLoggedIn.php">My Courses</a></li>
                 <li class="active"><a href="facultyGradeEntry.php">Grade</a></li>
-                <li><a href="#">Ticket</a></li>
+                <li><a href="ticketFaculty.php">Ticket</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="studentloggedIn.php?logout='1'" style="color: red;">Logout</a></li>
@@ -105,25 +105,6 @@ VALUES ( $student_id , $cur_semester , '$course_id'  ,  $grade , $credits)";
 
         <button type="submit" class="btn" name="grade_entry">Submit</button>
     </form>
-
-    <!--    <form method="post" action="facultyGradeEntry.php">-->
-    <!--        course id:<br>-->
-    <!--        <input type="text" name="course">-->
-    <!--        <br>-->
-    <!--        slot:<br>-->
-    <!--        <input type="text" name="slot">-->
-    <!--        <br>-->
-    <!--        room number:<br>-->
-    <!--        <input type="text" name="room_no">-->
-    <!--        <br>-->
-    <!--        cgpa limit:<br>-->
-    <!--        <input type="number" name="cgpa_limit">-->
-    <!--        <br>-->
-    <!--        no of students limit:<br>-->
-    <!--        <input type="number" name="no_of_students">-->
-    <!--        <br><br>-->
-    <!--        <button type="submit" class="btn" name="course_insert">Enter course to be offered</button>-->
-    <!--    </form>-->
 </div>
 
 </body>

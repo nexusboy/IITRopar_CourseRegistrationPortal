@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: merah
- * Date: 02-May-18
- * Time: 6:25 AM
+ * Date: 03-May-18
+ * Time: 5:18 AM
  */
 session_start();
 if (isset($_GET['logout'])) {
@@ -12,14 +12,13 @@ if (isset($_GET['logout'])) {
     unset($_SESSION['username']);
     header("location: login.php");
 }
-
 ?>
 
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Welcome Student <?php
+    <title>Welcome Teacher <?php
         echo $_SESSION['username'];
         ?></title>
     <script src="universal_js.js"></script>
@@ -39,15 +38,15 @@ if (isset($_GET['logout'])) {
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="#" class="navbar-brand">STUDENT</a>
+            <a href="#" class="navbar-brand">DEAN OFFICE</a>
         </div>
         <!-- Collection of nav links and other content for toggling -->
         <div id="navbarCollapse" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="studentloggedIn.php">Courses</a></li>
-                <li><a href="courseRegistration.php">Course Registration</a></li>
-                <li class="active"><a href="#">Registration Record</a></li>
-                <li><a href="ticketStudent.php">Ticket</a></li>
+                <li><a href="staffofDeanPage.php">Transcript</a></li>
+                <li><a href="probation.php">Probation Students</a></li>
+                <li class="active"><a href="#   ">Grades</a></li>
+                <li><a href="#">Ticket</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="studentloggedIn.php?logout='1'" style="color: red;">Logout</a></li>
@@ -56,17 +55,16 @@ if (isset($_GET['logout'])) {
     </div>
 </nav>
 
-<div class="container">
 
-    <h1>Registered Courses</h1>
-    <table class="table table-striped" id="table">
+<div class="container">
+    <h2>My Courses</h2>
+    <table class="table table-striped">
         <caption class="title"></caption>
         <thead>
         <tr>
             <th>#</th>
             <th>Course Id</th>
-            <th>Credits</th>
-            <th>Name</th>
+            <th>Average Grade</th>
         </tr>
         </thead>
         <tbody>
@@ -81,12 +79,12 @@ if (isset($_GET['logout'])) {
         }
 
         mysqli_select_db($db_connection, "crp");
-        $sql1 = 'SELECT courseid,credits,title
-FROM (SELECT courseid FROM enrolls INNER JOIN course_offering ON enrolls.courseid=course_offering.id
-WHERE enrolls.id='.$username.') as lol INNER JOIN courses ON courseid=courses.id;';
+        $sql1 = 'SELECT courseid,avg(grade)
+FROM grades
+GROUP BY courseid;';
         $result = mysqli_query($db_connection, $sql1);
         $no = 1;
-        $credits = 0;
+        $total = 0;
 
         while ($row = mysqli_fetch_row($result)) {
 
@@ -94,21 +92,9 @@ WHERE enrolls.id='.$username.') as lol INNER JOIN courses ON courseid=courses.id
 					<td>' . $no . '</td>
 					<td>' . $row[0] . '</td>
 					<td>' . $row[1] . '</td>
-					<td>' . $row[2] . '</td>
-
-                    <td><button class="btn btn-danger" id = ' . $no . ' onclick="dropCourse(this)">Drop</button></td>
 				</tr>';
             $no++;
-            $credits = $credits + $row[1];
         } ?>
         </tbody>
-        <tfoot>
-        <tr>
-            <th colspan="4">TOTAL CREDITS : <?php echo number_format($credits) ?></th>
-        </tr>
-        </tfoot>
     </table>
 </div>
-
-</body>
-</html>
