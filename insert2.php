@@ -38,7 +38,7 @@ if (!$results) {
 /* If there is no slot clash */
 if ( mysqli_num_rows($results) == 0 ) {
     /*Get the credit limit*/
-    $q_credit_limit = "SELECT (sum(credits)/2)*1.25 as cred_limit
+    $q_credit_limit = "SELECT (sum(grades.credits)/2)*1.25 as cred_limit
 FROM grades
 WHERE grades.id = $username /*User entry*/ AND (semester = 6/*current semester -1 */ OR semester = 5/*current semester - 2*/) AND (grade >=4 )
 GROUP BY grades.id;";
@@ -60,7 +60,7 @@ GROUP BY enrolls.id";
     }
     $creds_enrolled = $rows[0]['tot_reg_credits'];/*Got the credit limit*/
     echo "Credits already en ".$creds_enrolled;
-
+    echo $courseID."sis";
     $q_cur_creds = "SELECT credits as creds
 FROM courses
 WHERE courses.id='$courseID';";
@@ -69,10 +69,11 @@ WHERE courses.id='$courseID';";
     while($r = mysqli_fetch_assoc($q_run)) {
         $rows[] = $r;
     }
-    $course_credits = $rows[0]['creds'];/*Got the credit limit*/
-    echo "Credits already en ".$course_credits;
+    $course_credits= $rows[0]['creds'];/*Got the credit limit*/
+    echo "Credits of c_course ".$course_credits;
 
     if($course_credits+$creds_enrolled <= $cred_limit){
+
         $q1 = "INSERT INTO enrolls (id, courseid) VALUES ( $username , '$courseID' )";
         $results1 = mysqli_query($db_connection,$q1);
        if (!$results1) {
@@ -84,7 +85,9 @@ WHERE courses.id='$courseID';";
        }
 
     }else{
-        $q_fa_id = "INSERT INTO ticket_table(student_id, faculty_id, course_number,description) VALUES (1,2,'CSL356','Credit Limit Problem');";
+        $q_fa_id = "SELECT facultyid as fid
+FROM students
+WHERE id=$username;";
         $q_run = mysqli_query($db_connection,$q_fa_id);
         $rows = array();
         while($r = mysqli_fetch_assoc($q_run)) {
@@ -92,7 +95,7 @@ WHERE courses.id='$courseID';";
         }
         $advisor_id = $rows[0]['fid'];/*Got the credit limit*/
 
-        $q1 = "INSERT INTO ticket_table(student_id, faculty_id, course_number,description) VALUES ($username,$advisor_id,$courseID,'Credit Limit Problem');";
+        $q1 = "INSERT INTO ticket_table(student_id, faculty_id, course_number,description) VALUES ($username,$advisor_id,'$courseID','Credit Limit Problem');";
         $results1 = mysqli_query($db_connection,$q1);
         if (!$results1) {
             printf("Error: %s\n", mysqli_error($db_connection));
@@ -101,7 +104,7 @@ WHERE courses.id='$courseID';";
         else{
             printf("\n You have credit limit problem \n Ticket raised successfully \n");
         }
-        echo "\n raise ticket".$advisor_id;
+
 
     }
 
