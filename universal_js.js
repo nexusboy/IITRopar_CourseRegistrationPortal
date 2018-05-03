@@ -38,7 +38,21 @@ function dropCourse(button) {
 }
 
 function studentTranscript() {
-    var id = document.getElementById()
+    var id = document.getElementById("course_id").value;
+    // alert(id.value);
+    $.ajax({
+        type: "POST",
+        url: "studentTranscript.php",
+        data: {student_id: id},
+        success: function (OUTPUT) {
+            // alert(OUTPUT);
+            OUT = OUTPUT;
+        },
+        complete: function () {
+            document.getElementById("studentTranscriptTable").innerHTML = OUT;
+        }
+    });
+    console.log(id);
 }
 
 function viewCourses() {
@@ -53,7 +67,6 @@ function viewCourses() {
         },
         complete: function () {
             document.getElementById("thisdiv").innerHTML = OUT;
-            document.getElementById("thisdiv").style.background = "green";
 
         }
     });

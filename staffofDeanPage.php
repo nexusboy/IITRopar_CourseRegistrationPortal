@@ -44,8 +44,8 @@ if (isset($_GET['logout'])) {
         <div id="navbarCollapse" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Transcript</a></li>
-                <li><a href="">Probation Students</a></li>
-                <li><a href="">Grades</a></li>
+                <li><a href="#">Probation Students</a></li>
+                <li><a href="#">Grades</a></li>
                 <li><a href="#">Ticket</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -59,53 +59,18 @@ if (isset($_GET['logout'])) {
 <div class="container">
     <h2>Student Transcript</h2>
 
-    <form method="post" action="teacherLoggedIn.php">
 
-        <div class="form-group">
-            <label for="course_id">Course Id</label>
-            <input type="text" class="form-control" id="course_id" name="course_id" placeholder="course id">
-        </div>
+    <div class="form-group">
+        <label for="course_id">Course Id</label>
+        <input type="text" class="form-control" id="course_id" placeholder="course id">
+    </div>
 
-        <button type="submit" class="btn btn-primary" name="course_insert">Submit</button>
-    </form>
-<!--    <table class="table table-striped">-->
-<!--        <caption class="title"></caption>-->
-<!--        <thead>-->
-<!--        <tr>-->
-<!--            <th>#</th>-->
-<!--            <th>Student Id</th>-->
-<!--            <th>CGPA</th>-->
-<!--        </tr>-->
-<!--        </thead>-->
-<!--        <tbody>-->s
-<!--        --><?php
-//
-//        $username = $_SESSION['username'];
-//
-//        $db_connection = mysqli_connect('localhost', 'root', '', 'university_database');
-//        // Check The Connection
-//        if (!$db_connection) {
-//            die("Connection Failed: " . mysqli_connect_error());
-//        }
-//
-//        mysqli_select_db($db_connection, "crp");
-//        $sql1 = 'select students.id,SUM(grades.grade*grades.credits)/SUM(grades.credits) from grades inner join students on students.id = grades.id;';
-//        $result = mysqli_query($db_connection, $sql1);
-//        $no = 1;
-//        $total = 0;
-//
-//        while ($row = mysqli_fetch_row($result)) {
-//
-//            echo '<tr>
-//					<td>' . $no . '</td>
-//					<td>' . $row[0] . '</td>
-//					<td>' . $row[1] . '</td>
-//				</tr>';
-//            $no++;
-//        } ?>
-<!--        <!--        <td><button class="btn btn-primary" id = ' . $no . ' onclick="viewFacultyCourses()">View</button></td>-->-->
-<!--        </tbody>-->
-<!--    </table>-->
+    <table class="table table-striped" id="studentTranscriptTable">
+
+    </table>
+    <button class="btn btn-primary" onclick="studentTranscript()">Submit</button>
+
+
 </div>
 
 </body>
