@@ -27,10 +27,11 @@ function dropCourse(button) {
 
     $.ajax({
         type: "POST",
-        url: "dropStudent.php",
+        url: "drop_s_course.php",
         data: {query: 'select * from courses', drop_course: "1", course_id: course_id},
         success: function (OUTPUT) {
             OUT = OUTPUT;
+            alert("dropp success")
         },
         complete: function () {
         }
