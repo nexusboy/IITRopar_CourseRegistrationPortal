@@ -25,11 +25,11 @@
         </div>
 
         <div class="form-group">
-            <label for="password">Username</label>
-            <input type="text" class="form-control" id="password" name="password" placeholder="password">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="password">
         </div>
 
-        <button type="submit" class="btn" name="login_user">Login</button>
+        <button type="submit" class="btn btn-primary" name="login_user">Login</button>
 
     </form>
 </div>

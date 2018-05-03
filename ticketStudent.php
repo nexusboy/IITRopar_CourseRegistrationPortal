@@ -36,6 +36,7 @@ if (isset($_GET['logout'])) {
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
+                <li><a href="ticketStudent.php">Ticket</a></li>
                 <span class="icon-bar"></span>
             </button>
             <a href="#" class="navbar-brand">STUDENT</a>
@@ -46,6 +47,7 @@ if (isset($_GET['logout'])) {
                 <li><a href="studentloggedIn.php">Courses</a></li>
                 <li><a href="courseRegistration.php">Course Registration</a></li>
                 <li><a href="registrationRecord.php">Registration Record</a></li>
+                <li><a href="studentGrades.php">My Grades</a></li>
                 <li class="active"><a href="#">Ticket</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">

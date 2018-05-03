@@ -43,7 +43,8 @@ if (isset($_GET['logout'])) {
         <!-- Collection of nav links and other content for toggling -->
         <div id="navbarCollapse" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="deanLoggedIn.php">Ticket</a></li>
+                <li class="active"><a href="#">Ticket</a></li>
+                <li><a href="deanAddCourse.php">Add Course</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="studentloggedIn.php?logout='1'" style="color: red;">Logout</a></li>

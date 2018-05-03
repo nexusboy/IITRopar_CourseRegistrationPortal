@@ -2,9 +2,10 @@
 /**
  * Created by PhpStorm.
  * User: merah
- * Date: 02-May-18
- * Time: 6:25 AM
+ * Date: 03-May-18
+ * Time: 11:35 AM
  */
+
 session_start();
 if (isset($_GET['logout'])) {
     echo "entered here";
@@ -12,7 +13,6 @@ if (isset($_GET['logout'])) {
     unset($_SESSION['username']);
     header("location: login.php");
 }
-
 ?>
 
 
@@ -46,8 +46,8 @@ if (isset($_GET['logout'])) {
             <ul class="nav navbar-nav">
                 <li><a href="studentloggedIn.php">Courses</a></li>
                 <li><a href="courseRegistration.php">Course Registration</a></li>
-                <li class="active"><a href="#">Registration Record</a></li>
-                <li><a href="studentGrades.php">My Grades</a></li>
+                <li><a href="registrationRecord.php">Registration Record</a></li>
+                <li class="active"><a href="#">My Grades</a></li>
                 <li><a href="ticketStudent.php">Ticket</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -58,16 +58,14 @@ if (isset($_GET['logout'])) {
 </nav>
 
 <div class="container">
-
-    <h1>Registered Courses</h1>
-    <table class="table table-striped" id="table">
+    <h2>Student Grades</h2>
+    <table class="table table-striped">
         <caption class="title"></caption>
         <thead>
         <tr>
             <th>#</th>
             <th>Course Id</th>
-            <th>Credits</th>
-            <th>Name</th>
+            <th>Course Grade</th>
         </tr>
         </thead>
         <tbody>
@@ -82,12 +80,12 @@ if (isset($_GET['logout'])) {
         }
 
         mysqli_select_db($db_connection, "crp");
-        $sql1 = 'SELECT courseid,credits,title
-FROM (SELECT courseid FROM enrolls INNER JOIN course_offering ON enrolls.courseid=course_offering.id
-WHERE enrolls.id='.$username.') as lol INNER JOIN courses ON courseid=courses.id;';
+        $sql1 = 'SELECT courseid,grade
+FROM grades
+WHERE id=' . $username . '/*Given by the Staff*/ and semester =7;';
         $result = mysqli_query($db_connection, $sql1);
         $no = 1;
-        $credits = 0;
+        $total = 0;
 
         while ($row = mysqli_fetch_row($result)) {
 
@@ -95,21 +93,11 @@ WHERE enrolls.id='.$username.') as lol INNER JOIN courses ON courseid=courses.id
 					<td>' . $no . '</td>
 					<td>' . $row[0] . '</td>
 					<td>' . $row[1] . '</td>
-					<td>' . $row[2] . '</td>
-
-                    <td><button class="btn btn-danger" id = ' . $no . ' onclick="dropCourse(this)">Drop</button></td>
 				</tr>';
             $no++;
-            $credits = $credits + $row[1];
         } ?>
         </tbody>
-        <tfoot>
-        <tr>
-            <th colspan="4">TOTAL CREDITS : <?php echo number_format($credits) ?></th>
-        </tr>
-        </tfoot>
     </table>
 </div>
-
 </body>
 </html>

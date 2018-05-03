@@ -76,7 +76,7 @@ VALUES ('$course_code',$semester,'$room_number','$slot',$cgpa_limit,$number_of_s
         <div id="navbarCollapse" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">My Courses</a></li>
-                <li><a href="facultyGradeEntry.php">Grade</a></li>
+                <li><a href="facultyGradeEntry.php">Enter Grades</a></li>
                 <li><a href="ticketFaculty.php">Ticket</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -148,7 +148,7 @@ WHERE teaches.id = ' . $username . '/*PHP Session*/ GROUP BY enrolls.courseid;';
 
         <div class="form-group">
             <label for="room">Room</label>
-            <input type="text" class="form-control" id="room" name="room" placeholder="credit">
+            <input type="text" class="form-control" id="room" name="room" placeholder="room no">
         </div>
 
         <div class="form-group">
@@ -163,7 +163,7 @@ WHERE teaches.id = ' . $username . '/*PHP Session*/ GROUP BY enrolls.courseid;';
                    placeholder="no of students">
         </div>
 
-        <button type="submit" class="btn" name="course_insert">Submit</button>
+        <button type="submit" class="btn btn-primary" name="course_insert">Submit</button>
     </form>
 </div>
 

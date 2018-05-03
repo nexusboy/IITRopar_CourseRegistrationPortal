@@ -3,8 +3,9 @@
  * Created by PhpStorm.
  * User: merah
  * Date: 03-May-18
- * Time: 7:17 AM
+ * Time: 11:10 AM
  */
+
 session_start();
 if (isset($_GET['logout'])) {
     echo "entered here";
@@ -21,15 +22,17 @@ if (isset($_POST['course_insert'])) {
     }
     mysqli_select_db($db_connection, "crp");
     $course_code = $_POST['course_id'];
+    $ltp = $_POST['ltp'];
+    $course_title = $_POST['course_title'];
+    $course_description= $_POST['course_description'];
+    $credits= $_POST['credits'];
+    $category= $_POST['category'];
+    $department= $_POST['department'];
     $semester = 7;
-    $room_number = $_POST['room'];
-    $slot = $_POST['slot'];
-    $cgpa_limit = $_POST['cgpa_limit'];
-    $number_of_students = $_POST['no_of_students'];
     $username1 = $_SESSION['username'];
 
-    $insert_q = "INSERT INTO course_offering(id, semester, room_number, slot,cpa_limit,number_of_students) 
-VALUES ('$course_code',$semester,'$room_number','$slot',$cgpa_limit,$number_of_students);";
+    $insert_q = "INSERT INTO courses(id, ltp, title, description,credits,category,department) 
+VALUES ('$course_code','$ltp','$course_title','$course_description',$credits,'$category','$department');";
     $insert_q1 = "INSERT INTO teaches (id, courseid) values ($username1,'$course_code');";
 //    $insert_q2 = "INSERT INTO enrolls (id, courseid) values ($course_code,'$course_code');";
     $results1 = mysqli_query($db_connection, $insert_q);
@@ -70,14 +73,13 @@ VALUES ('$course_code',$semester,'$room_number','$slot',$cgpa_limit,$number_of_s
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="#" class="navbar-brand">FACULTY</a>
+            <a href="#" class="navbar-brand">DEAN</a>
         </div>
         <!-- Collection of nav links and other content for toggling -->
         <div id="navbarCollapse" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="teacherLoggedIn.php">My Courses</a></li>
-                <li><a href="facultyGradeEntry.php">Enter Grades</a></li>
-                <li class="active"><a href="#">Ticket</a></li>
+                <li><a href="deanLoggedIn.php">Ticket</a></li>
+                <li class="active"><a href="#">Add Course</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="studentloggedIn.php?logout='1'" style="color: red;">Logout</a></li>
@@ -86,58 +88,50 @@ VALUES ('$course_code',$semester,'$room_number','$slot',$cgpa_limit,$number_of_s
     </div>
 </nav>
 
-
 <div class="container">
+    <hr>
+    <h2>Add A Course</h2>
+    <form method="post" action="deanAddCourse.php">
 
-    <!--    <button id="myButton" onclick="viewCourses()">View_Courses</button>-->
+        <div class="form-group">
+            <label for="course_id">Course Id</label>
+            <input type="text" class="form-control" id="course_id" name="course_id" placeholder="course">
+        </div>
 
-    <h2>All Courses</h2>
-    <table class="table table-striped" id="table-ticket-faculty">
-        <caption class="title"></caption>
-        <thead>
-        <tr>
-            <th>#</th>
-            <th>Student Id</th>
-            <th>Faculty Id</th>
-            <th>Course Id</th>
-            <th>Ticket Description</th>
-        </tr>
-        </thead>
-        <tbody>
+        <div class="form-group">
+            <label for="ltp">LTP</label>
+            <input type="text" class="form-control" id="ltp" name="ltp" placeholder="ltp">
+        </div>
 
-        <?php
+        <div class="form-group">
+            <label for="course_title">Course Title</label>
+            <input type="text" class="form-control" id="course_title" name="course_title" placeholder="course title">
+        </div>
 
-        $username = $_SESSION['username'];
+        <div class="form-group">
+            <label for="course_description">Course Description</label>
+            <input type="text" class="form-control" id="course_description" name="course_description" placeholder="course description">
+        </div>
 
-        $db_connection = mysqli_connect('localhost', 'root', '', 'university_database');
-        // Check The Connection
-        if (!$db_connection) {
-            die("Connection Failed: " . mysqli_connect_error());
-        }
+        <div class="form-group">
+            <label for="credits">Credits</label>
+            <input type="number" class="form-control" id="credits" name="credits" placeholder="credits">
+        </div>
 
-        mysqli_select_db($db_connection, "crp");
-        $sql1 = 'SELECT * FROM ticket_table WHERE faculty_id=' . $username . ' and Current_Status=\'In Progress\';';
-        $result = mysqli_query($db_connection, $sql1);
-        $no = 1;
-        $total = 0;
+        <div class="form-group">
+            <label for="category">Category</label>
+            <input type="text" step="0.01" class="form-control" id="category" name="category"
+                   placeholder="category">
+        </div>
 
-        while ($row = mysqli_fetch_row($result)) {
+        <div class="form-group">
+            <label for="department">Department</label>
+            <input type="text" class="form-control" id="department" name="department"
+                   placeholder="department">
+        </div>
 
-            echo '<tr>
-					<td>' . $no . '</td>
-					<td>' . $row[0] . '</td>
-					<td>' . $row[1] . '</td>
-					<td>' . $row[2] . '</td>
-					<td>' . $row[3] . '</td>
-					
-					<td><button class="btn btn-success" id = ' . $no . ' onclick="ticketApprove(this)">Approve</button></td>
-					<td><button class="btn btn-danger" id = ' . $no . ' onclick="ticketDisapprove(this)">Decline</button></td>
-
-				</tr>';
-            $no++;
-        } ?>
-        </tbody>
-    </table>
+        <button type="submit" class="btn" name="course_insert">Submit</button>
+    </form>
 </div>
 
 </body>

@@ -43,9 +43,10 @@ if (isset($_GET['logout'])) {
         <!-- Collection of nav links and other content for toggling -->
         <div id="navbarCollapse" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Courses</a></li>
-                <li><a href="courseRegistration.php">Course Registration</a></li>
+                <li class="active"><a href="#">Course Catalogue</a></li>
+                <li><a href="courseRegistration.php">Floated Courses</a></li>
                 <li><a href="registrationRecord.php">Registration Record</a></li>
+                <li><a href="studentGrades.php">My Grades</a></li>
                 <li><a href="ticketStudent.php">Ticket</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -57,7 +58,7 @@ if (isset($_GET['logout'])) {
 
 <div class="container">
 
-<!--    <button id="myButton" onclick="viewCourses()">View_Courses</button>-->
+    <!--    <button id="myButton" onclick="viewCourses()">View_Courses</button>-->
 
     <h2>All Courses</h2>
     <table class="table table-striped">
@@ -68,7 +69,7 @@ if (isset($_GET['logout'])) {
             <th>Course Id</th>
             <th>Name</th>
             <th>Credits</th>
-            <th>Slot</th>
+            <th>LTP</th>
         </tr>
         </thead>
         <tbody>

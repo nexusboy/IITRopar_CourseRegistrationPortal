@@ -70,7 +70,7 @@ VALUES ( $student_id , $cur_semester , '$course_id'  ,  $grade , $credits)";
         <div id="navbarCollapse" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li><a href="teacherLoggedIn.php">My Courses</a></li>
-                <li class="active"><a href="facultyGradeEntry.php">Grade</a></li>
+                <li class="active"><a href="facultyGradeEntry.php">Enter Grades</a></li>
                 <li><a href="ticketFaculty.php">Ticket</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">

@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: merah
  * Date: 03-May-18
- * Time: 7:17 AM
+ * Time: 11:51 AM
  */
 session_start();
 if (isset($_GET['logout'])) {
@@ -47,6 +47,7 @@ VALUES ('$course_code',$semester,'$room_number','$slot',$cgpa_limit,$number_of_s
 }
 ?>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,14 +71,12 @@ VALUES ('$course_code',$semester,'$room_number','$slot',$cgpa_limit,$number_of_s
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="#" class="navbar-brand">FACULTY</a>
+            <a href="#" class="navbar-brand">HOD</a>
         </div>
         <!-- Collection of nav links and other content for toggling -->
         <div id="navbarCollapse" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="teacherLoggedIn.php">My Courses</a></li>
-                <li><a href="facultyGradeEntry.php">Enter Grades</a></li>
-                <li class="active"><a href="#">Ticket</a></li>
+                <li class="active"><a href="#">Add Courses</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="studentloggedIn.php?logout='1'" style="color: red;">Logout</a></li>
@@ -86,58 +85,40 @@ VALUES ('$course_code',$semester,'$room_number','$slot',$cgpa_limit,$number_of_s
     </div>
 </nav>
 
-
 <div class="container">
+    <hr>
+    <h2>Add A Course</h2>
+    <form method="post" action="hodOfficeLoggedIn.php">
 
-    <!--    <button id="myButton" onclick="viewCourses()">View_Courses</button>-->
+        <div class="form-group">
+            <label for="course_id">Course Id</label>
+            <input type="text" class="form-control" id="course_id" name="course_id" placeholder="course">
+        </div>
 
-    <h2>All Courses</h2>
-    <table class="table table-striped" id="table-ticket-faculty">
-        <caption class="title"></caption>
-        <thead>
-        <tr>
-            <th>#</th>
-            <th>Student Id</th>
-            <th>Faculty Id</th>
-            <th>Course Id</th>
-            <th>Ticket Description</th>
-        </tr>
-        </thead>
-        <tbody>
+        <div class="form-group">
+            <label for="slot">Course Slot</label>
+            <input type="text" class="form-control" id="slot" name="slot" placeholder="slot">
+        </div>
 
-        <?php
+        <div class="form-group">
+            <label for="room">Room</label>
+            <input type="text" class="form-control" id="room" name="room" placeholder="room no">
+        </div>
 
-        $username = $_SESSION['username'];
+        <div class="form-group">
+            <label for="cgpa_limit">CGPA limit</label>
+            <input type="number" step="0.01" class="form-control" id="cgpa_limit" name="cgpa_limit"
+                   placeholder="cgpa-limit">
+        </div>
 
-        $db_connection = mysqli_connect('localhost', 'root', '', 'university_database');
-        // Check The Connection
-        if (!$db_connection) {
-            die("Connection Failed: " . mysqli_connect_error());
-        }
+        <div class="form-group">
+            <label for="no_of_students">Max no of Students</label>
+            <input type="number" class="form-control" id="no_of_students" name="no_of_students"
+                   placeholder="no of students">
+        </div>
 
-        mysqli_select_db($db_connection, "crp");
-        $sql1 = 'SELECT * FROM ticket_table WHERE faculty_id=' . $username . ' and Current_Status=\'In Progress\';';
-        $result = mysqli_query($db_connection, $sql1);
-        $no = 1;
-        $total = 0;
-
-        while ($row = mysqli_fetch_row($result)) {
-
-            echo '<tr>
-					<td>' . $no . '</td>
-					<td>' . $row[0] . '</td>
-					<td>' . $row[1] . '</td>
-					<td>' . $row[2] . '</td>
-					<td>' . $row[3] . '</td>
-					
-					<td><button class="btn btn-success" id = ' . $no . ' onclick="ticketApprove(this)">Approve</button></td>
-					<td><button class="btn btn-danger" id = ' . $no . ' onclick="ticketDisapprove(this)">Decline</button></td>
-
-				</tr>';
-            $no++;
-        } ?>
-        </tbody>
-    </table>
+        <button type="submit" class="btn btn-primary" name="course_insert">Submit</button>
+    </form>
 </div>
 
 </body>
