@@ -48,7 +48,7 @@ GROUP BY grades.id;";
         $rows[] = $r;
     }
     $cred_limit = $rows[0]['cred_limit'];/*Got the credit limit*/
-    echo $cred_limit;
+    //echo $cred_limit;
 
     $q_enrolled_creds = "SELECT sum(credits) as tot_reg_credits FROM enrolls INNER JOIN courses ON courses.id=enrolls.courseid
 WHERE enrolls.id=$username/*username*/
@@ -59,8 +59,8 @@ GROUP BY enrolls.id";
         $rows[] = $r;
     }
     $creds_enrolled = $rows[0]['tot_reg_credits'];/*Got the credit limit*/
-    echo "Credits already en ".$creds_enrolled;
-    echo $courseID."sis";
+   // echo "Credits already en ".$creds_enrolled;
+    //echo $courseID."sis";
     $q_cur_creds = "SELECT credits as creds
 FROM courses
 WHERE courses.id='$courseID';";
@@ -70,7 +70,7 @@ WHERE courses.id='$courseID';";
         $rows[] = $r;
     }
     $course_credits= $rows[0]['creds'];/*Got the credit limit*/
-    echo "Credits of c_course ".$course_credits;
+    //echo "Credits of c_course ".$course_credits;
 
     if($course_credits+$creds_enrolled <= $cred_limit){
 

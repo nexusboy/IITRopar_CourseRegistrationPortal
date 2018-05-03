@@ -56,7 +56,7 @@ if (isset($_GET['logout'])) {
 
 
 <div class="container">
-    <h2>Student Grades</h2>
+    <h2>Aggregate Grades of courses</h2>
     <table class="table table-striped">
         <caption class="title"></caption>
         <thead>

@@ -58,9 +58,6 @@ if (isset($_GET['logout'])) {
 
 <div class="container">
 
-    <!--    <button id="myButton" onclick="viewCourses()">View_Courses</button>-->
-
-    <h2>All Courses</h2>
     <table class="table table-striped">
         <caption class="title"></caption>
         <thead>
@@ -87,7 +84,6 @@ if (isset($_GET['logout'])) {
         $sql1 = 'select * from courses';
         $result = mysqli_query($db_connection, $sql1);
         $no = 1;
-        $total = 0;
 
         while ($row = mysqli_fetch_row($result)) {
 
