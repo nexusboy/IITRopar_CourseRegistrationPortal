@@ -20,8 +20,7 @@ if (!$db_connection)
 }
 mysqli_select_db($db_connection, "crp");
 
-$q_update_table =  "UPDATE ticket_table
-SET Current_Status='dissaproved'
+$q_update_table =  "DELETE FROM ticket_table
 WHERE student_id = $student_id AND faculty_id = $teacher_id AND course_number='$course_id'";
 
 $query_run =  mysqli_query($db_connection,$q_update_table);
