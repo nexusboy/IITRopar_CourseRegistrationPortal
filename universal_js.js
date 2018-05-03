@@ -56,6 +56,56 @@ function studentTranscript() {
     console.log(id);
 }
 
+function ticketApprove(button) {
+    var button_id = parseInt(button.id, 10);
+    var table = document.getElementById("table-ticket-faculty");
+    // alert(table.id);
+    var rowCollection = table.rows.item(button_id).cells;
+    var student_id = rowCollection.item(1).innerText;
+    var faculty_id = rowCollection.item(2).innerText;
+    var course_id = rowCollection.item(3).innerText;
+
+    console.log(student_id + " " + faculty_id + " " + course_id);
+
+    $.ajax({
+        type: "POST",
+        url: "faculty_tick_a.php",
+        data: {student_id: student_id, faculty_id: faculty_id, course_id: course_id},
+        success: function (OUTPUT) {
+            //alert(OUTPUT);
+            OUT = OUTPUT;
+            button.closest('tr').remove();
+            alert(OUTPUT);
+        },
+        complete: function () {
+        }
+    });
+}
+
+function ticketDisapprove(button) {
+    var button_id = parseInt(button.id, 10);
+    var table = document.getElementById("table-ticket-faculty");
+    // alert(table.id);
+    var rowCollection = table.rows.item(button_id).cells;
+    var student_id = rowCollection.item(1).innerText;
+    var faculty_id = rowCollection.item(2).innerText;
+    var course_id = rowCollection.item(3).innerText;
+
+    console.log(student_id + " " + faculty_id + " " + course_id);
+
+    $.ajax({
+        type: "POST",
+        url: "faculty_tick_da.php",
+        data: {student_id: student_id, faculty_id: faculty_id, course_id: course_id},
+        success: function (OUTPUT) {
+            alert(OUTPUT);
+            OUT = OUTPUT;
+        },
+        complete: function () {
+        }
+    });
+}
+
 function viewCourses() {
     var OUT;
     $.ajax({

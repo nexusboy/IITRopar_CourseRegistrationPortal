@@ -46,7 +46,7 @@ if (isset($_GET['logout'])) {
                 <li><a href="staffofDeanPage.php">Transcript</a></li>
                 <li><a href="probation.php">Probation Students</a></li>
                 <li class="active"><a href="#   ">Grades</a></li>
-                <li><a href="#">Ticket</a></li>
+                <li><a href="">Ticket</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="studentloggedIn.php?logout='1'" style="color: red;">Logout</a></li>

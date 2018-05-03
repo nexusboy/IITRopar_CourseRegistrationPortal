@@ -92,7 +92,7 @@ VALUES ('$course_code',$semester,'$room_number','$slot',$cgpa_limit,$number_of_s
     <!--    <button id="myButton" onclick="viewCourses()">View_Courses</button>-->
 
     <h2>All Courses</h2>
-    <table class="table table-striped">
+    <table class="table table-striped" id="table-ticket-faculty">
         <caption class="title"></caption>
         <thead>
         <tr>
@@ -116,7 +116,7 @@ VALUES ('$course_code',$semester,'$room_number','$slot',$cgpa_limit,$number_of_s
         }
 
         mysqli_select_db($db_connection, "crp");
-        $sql1 = 'SELECT * FROM ticket_table WHERE faculty_id=' . $username . ' ;';
+        $sql1 = 'SELECT * FROM ticket_table WHERE faculty_id=' . $username .';';
         $result = mysqli_query($db_connection, $sql1);
         $no = 1;
         $total = 0;
@@ -130,8 +130,8 @@ VALUES ('$course_code',$semester,'$room_number','$slot',$cgpa_limit,$number_of_s
 					<td>' . $row[2] . '</td>
 					<td>' . $row[3] . '</td>
 					
-					<td><button class="btn btn-success" id = ' . $no . ' onclick="">Approve</button></td>
-					<td><button class="btn btn-danger" id = ' . $no . ' onclick="">Decline</button></td>
+					<td><button class="btn btn-success" id = ' . $no . ' onclick="ticketApprove(this)">Approve</button></td>
+					<td><button class="btn btn-danger" id = ' . $no . ' onclick="ticketDisapprove(this)">Decline</button></td>
 
 				</tr>';
             $no++;
