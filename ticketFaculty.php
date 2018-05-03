@@ -116,7 +116,7 @@ VALUES ('$course_code',$semester,'$room_number','$slot',$cgpa_limit,$number_of_s
         }
 
         mysqli_select_db($db_connection, "crp");
-        $sql1 = 'SELECT * FROM ticket_table WHERE faculty_id=' . $username .';';
+        $sql1 = 'SELECT * FROM ticket_table WHERE faculty_id=' . $username .' and Current_Status=\'In Progress\';';
         $result = mysqli_query($db_connection, $sql1);
         $no = 1;
         $total = 0;

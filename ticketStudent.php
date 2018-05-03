@@ -69,6 +69,7 @@ if (isset($_GET['logout'])) {
             <th>Faculty Id</th>
             <th>Course Id</th>
             <th>Ticket Description</th>
+            <th>Status</th>
         </tr>
         </thead>
         <tbody>
@@ -96,6 +97,7 @@ if (isset($_GET['logout'])) {
 					<td>' . $row[1] . '</td>
 					<td>' . $row[2] . '</td>
 					<td>' . $row[3] . '</td>
+					<td>' . $row[4] . '</td>
 				</tr>';
             $no++;
         } ?>

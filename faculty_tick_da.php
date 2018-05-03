@@ -7,10 +7,10 @@
  */
 
 /*This PHP file is for if faculty approves ticket */
-$student_id = 1 ;
-$teacher_id = 2 ;
-$course_id= 'CSL356';
-$dean_id = 7 ;
+$student_id = $_POST['student_id'];
+$teacher_id = $_POST['faculty_id'];
+$course_id = $_POST['course_id'];
+$dean_id = 7;
 
 $db_connection = mysqli_connect('localhost', 'root', '', 'university_database');
 // Check The Connection
@@ -24,7 +24,7 @@ $q_update_table =  "UPDATE ticket_table
 SET Current_Status='dissaproved'
 WHERE student_id = $student_id AND faculty_id = $teacher_id AND course_number='$course_id'";
 
-$query_run =  mysqli_query($db_connection,$f_query);
+$query_run =  mysqli_query($db_connection,$q_update_table);
 if(!$query_run)
 {
     echo "Error: " . mysqli_error($db_connection);;
