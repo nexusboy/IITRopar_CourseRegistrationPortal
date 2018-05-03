@@ -38,14 +38,14 @@ if (isset($_GET['logout'])) {
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="#" class="navbar-brand">Moodle</a>
+            <a href="#" class="navbar-brand">Dean</a>
         </div>
         <!-- Collection of nav links and other content for toggling -->
         <div id="navbarCollapse" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Transcript</a></li>
-                <li><a href="#">Probation Students</a></li>
-                <li><a href="#">Grades</a></li>
+                <li><a href="probation.php">Probation Students</a></li>
+                <li><a href="deanAggregateGrades.php">Grades</a></li>
                 <li><a href="#">Ticket</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -58,10 +58,8 @@ if (isset($_GET['logout'])) {
 
 <div class="container">
     <h2>Student Transcript</h2>
-
-
     <div class="form-group">
-        <label for="course_id">Course Id</label>
+        <label for="course_id">Student Id</label>
         <input type="text" class="form-control" id="course_id" placeholder="course id">
     </div>
 
@@ -69,7 +67,6 @@ if (isset($_GET['logout'])) {
 
     </table>
     <button class="btn btn-primary" onclick="studentTranscript()">Submit</button>
-
 
 </div>
 
