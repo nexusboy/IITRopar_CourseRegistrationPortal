@@ -7,7 +7,7 @@ function addCourse(button) {
 
     $.ajax({
         type: "POST",
-        url: "insert.php",
+        url: "insert2.php",
         data: {query: 'select * from courses', add_course: "1", course_id: course_id, course_slot: courseSlot},
         success: function (OUTPUT) {
             alert(OUTPUT);
